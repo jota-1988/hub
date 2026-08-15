@@ -115,18 +115,19 @@ button {
     "portrait availability"
     "portrait title"
     "portrait summary"
+    "portrait projects"
     "portrait links";
   grid-template-columns: minmax(14rem, 0.68fr) minmax(0, 1.55fr);
-  grid-template-rows: auto auto auto auto;
-  min-height: calc(100svh - 64px);
-  padding: clamp(2rem, 7vh, 5.5rem) 0;
+  grid-template-rows: auto auto auto auto auto;
+  min-height: 0;
+  padding: clamp(1.5rem, 4vh, 3rem) 0 clamp(2rem, 5vh, 4rem);
 }
 
 .portrait-wrap {
   align-self: stretch;
   background: #c6d8d6;
   grid-area: portrait;
-  min-height: 32rem;
+  min-height: 27rem;
   overflow: hidden;
   position: relative;
 }
@@ -168,7 +169,7 @@ button {
   gap: 0.55rem;
   grid-area: availability;
   letter-spacing: 0.14em;
-  margin-bottom: clamp(2rem, 5vh, 4rem);
+  margin-bottom: clamp(0.9rem, 2vh, 1.4rem);
 }
 
 .status-dot {
@@ -180,7 +181,7 @@ button {
 }
 
 .hero h1 {
-  font-size: clamp(3.2rem, 7.1vw, 7.5rem);
+  font-size: clamp(2.8rem, 5.7vw, 6rem);
   font-weight: 800;
   grid-area: title;
   letter-spacing: -0.082em;
@@ -196,12 +197,79 @@ button {
 }
 
 .hero-summary {
-  font-size: clamp(1rem, 1.65vw, 1.35rem);
+  font-size: clamp(0.95rem, 1.35vw, 1.18rem);
   grid-area: summary;
   letter-spacing: -0.025em;
   line-height: 1.45;
-  margin: clamp(2rem, 5vh, 3.8rem) 0 0;
+  margin: clamp(1.1rem, 2.5vh, 1.8rem) 0 0;
   max-width: 37rem;
+}
+
+.project-launcher {
+  display: grid;
+  gap: 1px;
+  grid-area: projects;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(1rem, 2.5vh, 1.6rem);
+}
+
+.launcher-link {
+  align-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-height: 4.6rem;
+  padding: 0.7rem;
+  position: relative;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.launcher-link:hover,
+.launcher-link:focus-visible {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.launcher-link.yellow {
+  background: #f1cf28;
+  color: var(--ink);
+}
+
+.launcher-link.violet-orange {
+  background: linear-gradient(135deg, #591672, #9f361d 145%);
+  color: var(--paper);
+}
+
+.launcher-link.blue {
+  background: #1750c7;
+  color: #f5f7ff;
+}
+
+.launcher-link.black-card {
+  background: #050505;
+  color: var(--paper);
+}
+
+.launcher-link small {
+  font-size: 0.52rem;
+  font-weight: 800;
+  grid-column: 1;
+  letter-spacing: 0.1em;
+  opacity: 0.58;
+}
+
+.launcher-link strong {
+  align-self: end;
+  font-size: clamp(0.7rem, 1vw, 0.88rem);
+  grid-column: 1;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.launcher-link span {
+  align-self: end;
+  font-size: 0.8rem;
+  grid-column: 2;
+  grid-row: 1 / 3;
 }
 
 .quick-links {
@@ -209,7 +277,7 @@ button {
   display: grid;
   grid-area: links;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(2rem, 5vh, 3.5rem);
+  margin-top: 0.65rem;
 }
 
 .quick-links a {
@@ -217,8 +285,8 @@ button {
   border-right: 1px solid var(--line);
   display: flex;
   gap: 0.6rem;
-  min-height: 4.35rem;
-  padding: 0.75rem;
+  min-height: 3.2rem;
+  padding: 0.55rem 0.7rem;
   transition: background 180ms ease, color 180ms ease;
 }
 
@@ -248,14 +316,14 @@ button {
 
 .directory {
   border-top: 1px solid var(--ink);
-  padding: clamp(4rem, 10vw, 9rem) 0;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
 }
 
 .section-intro {
   display: grid;
   gap: 2rem;
   grid-template-columns: 0.7fr 1.3fr auto;
-  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: clamp(1.8rem, 3.5vw, 3rem);
 }
 
 .section-kicker,
@@ -287,7 +355,7 @@ button {
   display: flex;
   flex-direction: column;
   isolation: isolate;
-  min-height: 34rem;
+  min-height: 29rem;
   overflow: hidden;
   padding: clamp(1.2rem, 3vw, 2.25rem);
   position: relative;
@@ -519,9 +587,9 @@ button {
 .practice {
   border-top: 1px solid var(--ink);
   display: grid;
-  gap: clamp(3rem, 7vw, 7rem) clamp(2rem, 8vw, 8rem);
+  gap: clamp(2rem, 5vw, 4.5rem) clamp(2rem, 8vw, 8rem);
   grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
-  padding: clamp(4rem, 10vw, 9rem) 0;
+  padding: clamp(3rem, 7vw, 6rem) 0;
 }
 
 .practice-lead h2 {
@@ -548,14 +616,6 @@ button {
   margin: 0;
 }
 
-.practice-copy-en {
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.55;
-  margin: 2rem 0 0;
-  max-width: 30rem;
-}
-
 .capability-list {
   display: grid;
   gap: 0 1px;
@@ -568,7 +628,7 @@ button {
   border-top: 1px solid var(--line);
   display: flex;
   gap: 1rem;
-  min-height: 7.5rem;
+  min-height: 5.5rem;
   padding: 1.2rem 0.9rem;
 }
 
@@ -590,8 +650,8 @@ button {
   color: var(--paper);
   display: grid;
   grid-template-columns: 0.7fr 1.3fr;
-  margin-bottom: clamp(3rem, 6vw, 6rem);
-  min-height: min(46rem, 78svh);
+  margin-bottom: clamp(2rem, 4vw, 4rem);
+  min-height: min(34rem, 68svh);
   padding: clamp(1.5rem, 5vw, 4rem);
 }
 
@@ -674,10 +734,11 @@ button {
       "portrait availability"
       "title title"
       "summary summary"
+      "projects projects"
       "links links";
-    grid-template-columns: 7.1rem minmax(0, 1fr);
+    grid-template-columns: 6rem minmax(0, 1fr);
     min-height: auto;
-    padding: 1.5rem 0 4rem;
+    padding: 1rem 0 2rem;
   }
 
   .portrait-wrap {
@@ -693,29 +754,40 @@ button {
   }
 
   .hero h1 {
-    font-size: clamp(2.55rem, 12vw, 5.2rem);
-    margin-top: 2rem;
+    font-size: clamp(2.45rem, 11.5vw, 4.7rem);
+    margin-top: 1.15rem;
     max-width: none;
   }
 
   .hero-summary {
-    margin-top: 2rem;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+
+  .project-launcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .launcher-link {
+    min-height: 3.8rem;
+    padding: 0.6rem 0.7rem;
   }
 
   .quick-links {
-    margin-top: 2.25rem;
+    margin-top: 0.55rem;
   }
 
   .quick-links a {
     flex-direction: column;
     gap: 0.25rem;
     justify-content: center;
-    min-height: 4rem;
-    padding: 0.5rem 0.25rem;
+    min-height: 2.75rem;
+    padding: 0.35rem 0.25rem;
   }
 
   .quick-links small {
-    font-size: 0.52rem;
+    display: none;
   }
 
   .section-intro {
@@ -732,7 +804,7 @@ button {
   }
 
   .world-card {
-    min-height: 30rem;
+    min-height: 25rem;
   }
 
   .card-logo {
