@@ -1,11 +1,11 @@
-# JOTA — Creativo Digital
+# JOTA 1988 — Creativo Digital
 
 ## Probar la web offline
 
 1. Descomprimí el ZIP.
 2. Abrí `index.html` con doble clic.
 
-La página, sus estilos, la foto y los logos están incluidos: no necesita npm,
+La página, sus estilos, las fotos y los logos están incluidos: no necesita npm,
 instalaciones ni un servidor local. Los enlaces a Instagram, Spotify, YouTube y
 los demás destinos externos sí necesitan conexión a internet.
 

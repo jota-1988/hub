@@ -7,28 +7,90 @@
       name="description"
       content="Música, diseño, 3D, código y experiencias digitales creadas por Jota desde Buenos Aires."
     />
-    <meta name="theme-color" content="#f0f0eb" />
-    <title>JOTA — Creativo Digital</title>
+    <meta id="theme-color" name="theme-color" content="#0b0c0b" />
+    <title>JOTA 1988 — Creativo Digital</title>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("jota-theme");
+        document.documentElement.dataset.theme =
+          savedTheme === "light" ? "light" : "dark";
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./script.js" defer></script>
   </head>
   <body>
+    <svg
+      aria-hidden="true"
+      width="0"
+      height="0"
+      style="position: absolute; overflow: hidden"
+    >
+      <symbol id="icon-spotify" viewBox="0 0 24 24">
+        <path d="M4.5 8.4c4.8-1.45 10.3-.9 14.7 1.25" />
+        <path d="M5.6 12c4.1-1.08 8.8-.62 12.45 1.18" />
+        <path d="M6.7 15.45c3.35-.76 7.1-.39 10.05 1.05" />
+      </symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-youtube" viewBox="0 0 24 24">
+        <rect x="2.8" y="5.5" width="18.4" height="13" rx="4" />
+        <path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-bandcamp" viewBox="0 0 24 24">
+        <path d="M7.4 6.2h13.1l-4 11.6H3.4l4-11.6Z" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-patreon" viewBox="0 0 24 24">
+        <path d="M5.3 4.1v15.8" />
+        <circle cx="14.4" cy="9.4" r="5.3" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
+        <path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17" />
+        <path d="M8 13h3M13 13h3M8 16.5h3M13 16.5h3" />
+      </symbol>
+      <symbol id="icon-flag" viewBox="0 0 24 24">
+        <path d="M5 21V4.5M5 5c5-3 8.8 3.1 14-.1v9.2c-5.2 3.2-9-3-14 .1" />
+        <path d="M8 5.1h3v3H8zM14 5.2h3v3h-3zM11 8.1h3v3h-3zM8 11.1h3v3H8zM14 11.1h3v3h-3z" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <rect x="2.8" y="5.2" width="18.4" height="13.6" rx="2.5" />
+        <path d="m4.2 7 7.8 6 7.8-6" />
+      </symbol>
+    </svg>
     <main id="top">
       <header class="topbar" aria-label="Encabezado principal">
-        <a class="brand" href="#top" aria-label="Jota, inicio">
-          JOTA<span class="brand-dot">.</span>
+        <a class="brand" href="#top" aria-label="Jota 1988, inicio">
+          JOTA 1988<span class="brand-dot">.</span>
         </a>
         <p class="topbar-role">CREATIVO DIGITAL</p>
-        <button
-          class="share-button"
-          id="share-button"
-          type="button"
-          aria-live="polite"
-        >
-          <span class="share-label">COMPARTIR</span>
-          <span aria-hidden="true">↗</span>
-        </button>
+        <div class="topbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Activar modo noche"
+          >
+            <span class="theme-glyph" aria-hidden="true"></span>
+            <span class="theme-label">NOCHE</span>
+          </button>
+          <button
+            class="share-button"
+            id="share-button"
+            type="button"
+            aria-live="polite"
+          >
+            <span class="share-label">COMPARTIR</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
       </header>
 
       <div class="page-shell">
@@ -45,7 +107,9 @@
 
           <div class="availability">
             <span class="status-dot" aria-hidden="true"></span>
-            BUENOS AIRES · EN LÍNEA
+            <span class="status-copy" id="status-copy">
+              BUENOS AIRES · EN LÍNEA
+            </span>
           </div>
 
           <h1 id="hero-title">
@@ -94,39 +158,10 @@
             </a>
           </nav>
 
-          <nav class="quick-links" aria-label="Enlaces rápidos">
-            <a
-              href="https://www.instagram.com/jota.1988/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-            >
-              <span aria-hidden="true">IG</span><small>Instagram</small>
-            </a>
-            <a
-              href="https://open.spotify.com/artist/7pJDetGhrQ6zCsnNLUoICQ"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Spotify"
-            >
-              <span aria-hidden="true">SP</span><small>Spotify</small>
-            </a>
-            <a
-              href="https://youtube.com/theaudioexporter"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-            >
-              <span aria-hidden="true">YT</span><small>YouTube</small>
-            </a>
-            <a href="mailto:jota1988music@gmail.com" aria-label="Correo">
-              <span aria-hidden="true">@</span><small>Correo</small>
-            </a>
-          </nav>
         </section>
 
         <section class="directory" aria-labelledby="directory-title">
-          <div class="section-intro">
+          <div class="section-intro" data-reveal>
             <p class="section-kicker">DIRECTORIO</p>
             <h2 id="directory-title">
               TODO LO QUE HAGO,<br />
@@ -140,6 +175,7 @@
               class="world-card yellow"
               id="world-01"
               style="--accent: #11110f"
+              data-reveal
             >
               <a
                 class="card-hit-area"
@@ -175,11 +211,22 @@
                 >
                   Entrar a JOTA 1988 <span aria-hidden="true">↗</span>
                 </a>
-                <div class="secondary-actions">
-                  <a href="https://open.spotify.com/artist/7pJDetGhrQ6zCsnNLUoICQ" target="_blank" rel="noreferrer">Spotify</a>
-                  <a href="https://jota1988.bandcamp.com/" target="_blank" rel="noreferrer">Bandcamp</a>
-                  <a href="https://www.instagram.com/jota.1988/" target="_blank" rel="noreferrer">Instagram</a>
-                  <a href="https://youtube.com/theaudioexporter" target="_blank" rel="noreferrer">YouTube</a>
+                <div class="platform-row">
+                  <span class="platform-label">ESCUCHÁ / SEGUÍ</span>
+                  <div class="secondary-actions">
+                    <a class="platform-link" data-label="Spotify" href="https://open.spotify.com/artist/7pJDetGhrQ6zCsnNLUoICQ" target="_blank" rel="noreferrer" aria-label="JOTA 1988: Spotify" title="Spotify">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-spotify"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Bandcamp" href="https://jota1988.bandcamp.com/" target="_blank" rel="noreferrer" aria-label="JOTA 1988: Bandcamp" title="Bandcamp">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-bandcamp"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Instagram" href="https://www.instagram.com/jota.1988/" target="_blank" rel="noreferrer" aria-label="JOTA 1988: Instagram" title="Instagram">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-instagram"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="YouTube" href="https://youtube.com/theaudioexporter" target="_blank" rel="noreferrer" aria-label="JOTA 1988: YouTube" title="YouTube">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-youtube"></use></svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -188,6 +235,7 @@
               class="world-card dark violet-orange"
               id="world-02"
               style="--accent: #ff7628"
+              data-reveal
             >
               <a
                 class="card-hit-area"
@@ -224,9 +272,16 @@
                 >
                   Ver La Excusa <span aria-hidden="true">↗</span>
                 </a>
-                <div class="secondary-actions">
-                  <a href="https://www.youtube.com/@La-Excusa" target="_blank" rel="noreferrer">YouTube</a>
-                  <a href="https://www.youtube.com/@La-Excusa" target="_blank" rel="noreferrer">Viernes · 21 h</a>
+                <div class="platform-row">
+                  <span class="platform-label">VER / RECORDAR</span>
+                  <div class="secondary-actions">
+                    <a class="platform-link" data-label="YouTube" href="https://www.youtube.com/@La-Excusa" target="_blank" rel="noreferrer" aria-label="LA EXCUSA: YouTube" title="YouTube">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-youtube"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Viernes · 21 h" href="https://www.youtube.com/@La-Excusa" target="_blank" rel="noreferrer" aria-label="LA EXCUSA: Viernes · 21 h" title="Viernes · 21 h">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-calendar"></use></svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -235,6 +290,7 @@
               class="world-card dark blue"
               id="world-03"
               style="--accent: #f5f7ff"
+              data-reveal
             >
               <a
                 class="card-hit-area"
@@ -271,11 +327,22 @@
                 >
                   Entrar a Jotracks <span aria-hidden="true">↗</span>
                 </a>
-                <div class="secondary-actions">
-                  <a href="https://www.patreon.com/cw/jotracks" target="_blank" rel="noreferrer">Patreon</a>
-                  <a href="https://www.instagram.com/jotracks.ac" target="_blank" rel="noreferrer">Instagram</a>
-                  <a href="https://assettof1.jotracks.com/" target="_blank" rel="noreferrer">Campeonato F1</a>
-                  <a href="https://www.youtube.com/@jotracks-ac" target="_blank" rel="noreferrer">YouTube</a>
+                <div class="platform-row">
+                  <span class="platform-label">COMUNIDAD / CONTENIDO</span>
+                  <div class="secondary-actions">
+                    <a class="platform-link" data-label="Patreon" href="https://www.patreon.com/cw/jotracks" target="_blank" rel="noreferrer" aria-label="JOTRACKS: Patreon" title="Patreon">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-patreon"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Instagram" href="https://www.instagram.com/jotracks.ac" target="_blank" rel="noreferrer" aria-label="JOTRACKS: Instagram" title="Instagram">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-instagram"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Campeonato F1" href="https://assettof1.jotracks.com/" target="_blank" rel="noreferrer" aria-label="JOTRACKS: Campeonato F1" title="Campeonato F1">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-flag"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="YouTube" href="https://www.youtube.com/@jotracks-ac" target="_blank" rel="noreferrer" aria-label="JOTRACKS: YouTube" title="YouTube">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-youtube"></use></svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -284,6 +351,7 @@
               class="world-card dark black-card"
               id="world-04"
               style="--accent: #f0f0eb"
+              data-reveal
             >
               <a
                 class="card-hit-area"
@@ -319,9 +387,16 @@
                 >
                   Ir al canal <span aria-hidden="true">↗</span>
                 </a>
-                <div class="secondary-actions">
-                  <a href="https://youtube.com/theaudioexporter" target="_blank" rel="noreferrer">YouTube</a>
-                  <a href="mailto:jota1988music@gmail.com">Contacto</a>
+                <div class="platform-row">
+                  <span class="platform-label">CANAL / CONTACTO</span>
+                  <div class="secondary-actions">
+                    <a class="platform-link" data-label="YouTube" href="https://youtube.com/theaudioexporter" target="_blank" rel="noreferrer" aria-label="THE AUDIO EXPORTER: YouTube" title="YouTube">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-youtube"></use></svg>
+                    </a>
+                    <a class="platform-link" data-label="Contacto" href="mailto:jota1988music@gmail.com" aria-label="THE AUDIO EXPORTER: Contacto" title="Contacto">
+                      <svg class="platform-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-mail"></use></svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -329,7 +404,18 @@
         </section>
 
         <section class="practice" aria-labelledby="practice-title">
-          <div class="practice-lead">
+          <figure class="studio-ghost" aria-hidden="true">
+            <img
+              src="./assets/images/jota-studio.webp"
+              alt=""
+              width="1087"
+              height="1447"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>JOTA / STUDIO 02</span>
+          </figure>
+          <div class="practice-lead" data-reveal>
             <p class="section-kicker">PRÁCTICA CREATIVA</p>
             <h2 id="practice-title">
               NO HAGO UNA<br />
@@ -337,14 +423,18 @@
               <span>ESA ES LA IDEA.</span>
             </h2>
           </div>
-          <div class="practice-copy">
+          <div class="practice-copy" data-reveal>
             <p>
               Trabajo justo donde se cruzan el arte y la herramienta: puedo
               componer una canción, modelar un circuito, diseñar una identidad
               o programar la solución que el proyecto necesita.
             </p>
           </div>
-          <div class="capability-list" aria-label="Disciplinas creativas">
+          <div
+            class="capability-list"
+            aria-label="Disciplinas creativas"
+            data-reveal
+          >
             <div><span>01</span><strong>Música &amp; sonido</strong></div>
             <div><span>02</span><strong>Modelado 3D</strong></div>
             <div><span>03</span><strong>Diseño visual</strong></div>
@@ -354,7 +444,7 @@
           </div>
         </section>
 
-        <section class="contact" aria-labelledby="contact-title">
+        <section class="contact" aria-labelledby="contact-title" data-reveal>
           <p class="contact-kicker">COLABOREMOS / HAGAMOS ALGO</p>
           <h2 id="contact-title">
             ¿TENÉS UNA<br />
@@ -377,7 +467,7 @@
       </div>
 
       <footer class="footer">
-        <p>JOTA / CREATIVO DIGITAL</p>
+        <p>JOTA 1988 / CREATIVO DIGITAL</p>
         <p>BUENOS AIRES · 2026</p>
       </footer>
     </main>
