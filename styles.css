@@ -298,20 +298,24 @@ button {
   color: var(--paper);
 }
 
-.world-card.warm {
-  background: #fff6ef;
+.world-card.yellow {
+  background: #f1cf28;
+  color: var(--ink);
 }
 
-.world-card.aqua {
-  background: #cfe5e2;
+.world-card.violet-orange {
+  background: linear-gradient(135deg, #591672 0%, #32143f 58%, #b53e1d 145%);
+  color: var(--paper);
 }
 
-.world-card.cobalt {
-  background: #263257;
+.world-card.blue {
+  background: #1750c7;
+  color: #f5f7ff;
 }
 
-.world-card.violet {
-  background: #18151e;
+.world-card.black-card {
+  background: #050505;
+  color: var(--paper);
 }
 
 .card-topline,
@@ -321,13 +325,36 @@ button {
   z-index: 2;
 }
 
+.card-hit-area {
+  cursor: pointer;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.card-hit-area:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -7px;
+}
+
+.card-topline,
+.card-body {
+  pointer-events: none;
+}
+
+.card-actions {
+  pointer-events: auto;
+  z-index: 3;
+}
+
 .card-logo {
+  --logo-opacity: 0.24;
   --logo-rotate: 0deg;
   align-items: center;
   display: flex;
   height: 62%;
   justify-content: center;
-  opacity: 0.14;
+  opacity: var(--logo-opacity);
   pointer-events: none;
   position: absolute;
   right: -12%;
@@ -346,8 +373,8 @@ button {
 }
 
 .logo-jotracks {
+  --logo-opacity: 0.31;
   --logo-rotate: 6deg;
-  opacity: 0.16;
   right: -11%;
   top: 2%;
   width: 58%;
@@ -358,8 +385,8 @@ button {
 }
 
 .logo-jota {
+  --logo-opacity: 0.25;
   --logo-rotate: -5deg;
-  opacity: 0.11;
   right: -13%;
   top: 5%;
   width: 68%;
@@ -370,8 +397,8 @@ button {
 }
 
 .logo-audio-exporter {
+  --logo-opacity: 0.31;
   --logo-rotate: 4deg;
-  opacity: 0.17;
   right: -15%;
   top: -1%;
   width: 76%;
@@ -382,8 +409,8 @@ button {
 }
 
 .logo-excusa {
+  --logo-opacity: 0.43;
   --logo-rotate: -4deg;
-  opacity: 0.25;
   right: -11%;
   top: 5%;
   width: 70%;
@@ -394,7 +421,7 @@ button {
 }
 
 .world-card:hover .card-logo {
-  opacity: 0.28;
+  opacity: calc(var(--logo-opacity) + 0.13);
   transform: translate(-0.4rem, -0.25rem) rotate(var(--logo-rotate)) scale(1.025);
 }
 
