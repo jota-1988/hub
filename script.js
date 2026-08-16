@@ -73,36 +73,17 @@ if (reduceMotion.matches) {
   revealNodes.forEach((node) => revealObserver.observe(node));
 
   let pointerFrame = 0;
-  let scrollFrame = 0;
-
   window.addEventListener(
     "pointermove",
     (event) => {
       window.cancelAnimationFrame(pointerFrame);
       pointerFrame = window.requestAnimationFrame(() => {
-        const xRatio = event.clientX / window.innerWidth;
-        const yRatio = event.clientY / window.innerHeight;
         root.style.setProperty("--pointer-x", `${event.clientX}px`);
         root.style.setProperty("--pointer-y", `${event.clientY}px`);
-        root.style.setProperty("--parallax-x", `${(xRatio - 0.5) * 10}px`);
-        root.style.setProperty("--parallax-y", `${(yRatio - 0.5) * 8}px`);
       });
     },
     { passive: true },
   );
-
-  const updateScroll = () => {
-    window.cancelAnimationFrame(scrollFrame);
-    scrollFrame = window.requestAnimationFrame(() => {
-      root.style.setProperty(
-        "--scroll-shift",
-        `${-Math.min(window.scrollY * 0.021, 38)}px`,
-      );
-    });
-  };
-
-  window.addEventListener("scroll", updateScroll, { passive: true });
-  updateScroll();
 }
 
 const shareButton = document.querySelector("#share-button");
