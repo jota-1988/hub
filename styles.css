@@ -267,7 +267,7 @@ button {
   letter-spacing: -0.082em;
   line-height: 0.84;
   margin: 0;
-  max-width: 9ch;
+  max-width: none;
   text-wrap: balance;
 }
 
